@@ -12,7 +12,7 @@ public class RolDAO {
     /*Listar: */
     public ArrayList<RolModel> Listar() throws SQLException, ClassNotFoundException {
         ArrayList<RolModel> lista = new ArrayList();
-        String sql = "SELECT Rolid, CONCAT_WS(' ', us.nombres, us.apellidos) AS [Nombres y apellidos], us.dni, trl.TipRol FROM dbo.Roles rl \n"
+        String sql = "CALL Rolid, CONCAT_WS(' ', us.nombres, us.apellidos) AS [Nombres y apellidos], us.dni, trl.TipRol FROM dbo.Roles rl \n"
                 + "INNER JOIN dbo.Usuarios us ON us.Userid = rl.Userid_fk\n"
                 + "INNER JOIN dbo.TipRol trl ON trl.TipRol = rl.tipRolid_fk";
 
@@ -62,7 +62,7 @@ public class RolDAO {
     /*Seleccionar: */
     public ArrayList<UserModel> DNI() throws SQLException, ClassNotFoundException {
         ArrayList<UserModel> lista = new ArrayList();
-        String sql = "SELECT dni, CONCAT_WS(' ', nombres, apellidos) AS [Nombres y apellidos] FROM dbo.Usuarios";
+        String sql = "CALL dni, CONCAT_WS(' ', nombres, apellidos) AS [Nombres y apellidos] FROM dbo.Usuarios";
 
         try {
 
@@ -85,7 +85,7 @@ public class RolDAO {
 
     public ArrayList<RolModel> Seleccionar(int id) throws SQLException, ClassNotFoundException {
         ArrayList<RolModel> lista = new ArrayList();
-        String sql = "SELECT Rolid, us.dni, trl.Tiprol FROM dbo.Roles rl \n"
+        String sql = "CALL Rolid, us.dni, trl.Tiprol FROM dbo.Roles rl \n"
                 + "INNER JOIN dbo.Usuarios us ON us.Userid = rl.Userid_fk\n"
                 + "INNER JOIN dbo.TipRol trl ON trl.TipRol = rl.tipRolid_fk\n"
                 + "WHERE Rolid = " + id + "";
